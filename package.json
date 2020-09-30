@@ -1,0 +1,19 @@
+{
+  "name": "shooty-shooty-bang-bang",
+  "version": "1.0.0",
+  "description": "The shooty shooty goes bang bang",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BEN1JEN/shooty-shooty-bang-bang.git"
+  },
+  "author": "Ben and Saweron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BEN1JEN/shooty-shooty-bang-bang/issues"
+  },
+  "homepage": "https://github.com/BEN1JEN/shooty-shooty-bang-bang#readme"
+}
