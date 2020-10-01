@@ -2,6 +2,7 @@
 
 import getInput from "./getInput.js"
 import Player from "./Player.js"
+import Bullet from "./Bullet.js"
 
 const playerNames = [
 	"[QWE]\t[ASD]",
@@ -24,9 +25,8 @@ export default class World {
 			canvas.context.fillText("Press any key to join.", 100, 100);
 			for (const player in held) {
 				for (const [key, en] of Object.entries(held[player])) {
-					console.log(key, en);
 					if (en) {
-						this.players[player] = new Player(parseInt(player));
+						this.players[player] = new Player(parseInt(player), this);
 					}
 				}
 			}
@@ -55,7 +55,13 @@ export default class World {
 			for (const [number, player] of Object.entries(this.players)) {
 				player.update(held[number], canvas, delta);
 			}
+			for (const bullet of this.bullets) {
+				bullet.update(this, canvas, delta);
+			}
 			break;
 		}
+	}
+	addBullet(playerMask, playerX, playerY, directionX, directionY, speed) {
+		this.bullets.push(new Bullet(playerMask, playerX, playerY, directionX, directionY, speed));
 	}
 }
