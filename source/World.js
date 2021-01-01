@@ -1,8 +1,9 @@
 "use strict";
 
-import getInput from "./getInput.js"
-import Player from "./Player.js"
-import Bullet from "./Bullet.js"
+import getInput from "./getInput.js";
+import Player from "./Player.js";
+import Bullet from "./Bullet.js";
+import loadLevel from "./loadLevel.js";
 
 const playerNames = [
 	"[QWE]\t[ASD]",
@@ -52,11 +53,22 @@ export default class World {
 			}
 			break;
 		case "game":
+			this.objects = [
+				{type: "wall", x1: 50, y1: 50, x2: 550, y2: 100},
+			];
 			for (const [number, player] of Object.entries(this.players)) {
 				player.update(held[number], canvas, delta);
 			}
 			for (const bullet of this.bullets) {
 				bullet.update(this, canvas, delta);
+			}
+			canvas.context.lineWidth = 10;
+			for (const object of Object.values(this.objects)) {
+				canvas.context.beginPath();
+				canvas.context.moveTo(object.x1, object.y1);
+				canvas.context.lineTo(object.x2, object.y2);
+				canvas.context.closePath();
+				canvas.context.stroke();
 			}
 			break;
 		}
